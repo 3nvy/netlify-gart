@@ -1,0 +1,20 @@
+{
+    "name": "ts-graphql-apollo-skeleton",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "private": true,
+    "workspaces": [
+        "api",
+        "web"
+    ],
+    "scripts": {
+        "start": "yarn --cwd web start",
+        "build": "yarn --cwd web build",
+        "install": "yarn --cwd api prisma:generate",
+        "prisma:generate": "yarn --cwd api prisma:generate"
+    },
+    "devDependencies": {
+        "concurrently": "^7.3.0"
+    }
+}
