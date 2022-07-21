@@ -5,7 +5,7 @@ import ReactDOM from "react-dom/client";
 import App from "./components/App/App";
 
 const client = new ApolloClient({
-    uri: "/graphql",
+    uri: "/.netlify/functions/graphql",
     cache: new InMemoryCache(),
 });
 
