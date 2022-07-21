@@ -1,4 +1,4 @@
-# Typescript, GraphQl, Apollo & React Skeleton
+# GraphQL, Apollo, React and Typescript skeleton using Netlify Functions
 
 ### This is Full-stack, ready-to-use skeleton that you can use for your projects. 
 ### It uses the following technologies:
@@ -12,7 +12,7 @@
 <br/>
 
 ### API Side
- - ExpressJS
+ - Netlify Functions
  - Apollo Server
  - Prisma Client
   
@@ -30,22 +30,37 @@ The project assumes that you already have enough knowledge on the above technolo
 
 <br/><br>
 
+## Pre-Requirements
+
+This project uses netlify functions, in order to deploy a serverless full-stack project onto the web, as such, please consider create a netlify account before starting
+
+<br><br>
+
 ## Setting Up The Database
 
 <br>
 
 The project is structured to work with a live database, but you are free to reconfigure and use what you want. I personally recommend [Supabase](https://supabase.com), as its free and really easy to use and setup.
 
-Once you have your database setup, you will need to add your `Connection String` to the `.env` file located inside the `/api` folder, by replacing the `DATABASE_URL` with real data.
+Once you have your database setup, you will need to add your `Connection String` to the `.env` file, by replacing the `DATABASE_URL` with a valid url.
 
 This should be all you need for your database, you don't need to create any tables or any kind of structure in the database, as Prisma Client will take care of that
 
 <br><br>
 
+
 ## Start The Project
 <br>
+As the project relies on netlify functions, start by installing the netlify cli if you haven't already:
 
-Start the project by installing all the dependencies of the project by running
+```
+npm install netlify-cli -g
+```
+
+<br>
+
+Install all the require dependencies:
+
 ```
 yarn
 ```
@@ -65,10 +80,10 @@ This will generate a migration and sync the database with your current Prisma Sc
 Then run the both api and web to start the project:
 
 ```
-yarn run dev
+ntl dev
 ```
 
-By now you should have the example project running, note that API is running at `http://localhost:4000/graphql` and the Web project is running at `http://localhost:3000`
+By now you should have the example project running, note that API is running at `http://localhost:8888/.netlify/functions/graphql` and the Web project is running at `http://localhost:8888`
 
 <br><br>
 
