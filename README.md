@@ -90,3 +90,34 @@ By now you should have the example project running, note that API is running at 
 ## Notes
 
 By running the first migration, you will sync the database with the current Prisma Schema, which contains a simple example model, which you probably wont want for your project. You can sort this out by editing the schema before hand, or just remove the model and create another migration.
+
+
+<br><br>
+
+## Deploying
+
+In order to deploy the project live, first compile the web project by running:
+
+```
+ntl build
+```
+
+Then to deploy the website onto netlify
+
+`Note: This step will ask you to login and select either an existent project or a new project to deploy to. This should only happen once per project.`
+
+```
+ntl deploy
+```
+
+After the deployment, you should be given a couple of links, where you can see a draft of your project running. 
+
+You also need to setup the `env` parameter to `DATABASE_URL` manually onto your project settings, under `Build & Deploy` as this file is only used locally.
+
+After all this setup, if the website looks good and everything is working, you just need to type
+
+```
+ntl deploy --prod
+```
+
+And now your project should be fully online, both Web and API
