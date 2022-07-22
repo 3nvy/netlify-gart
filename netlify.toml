@@ -4,4 +4,4 @@
   publish = "web/build" # create-react-app builds to this folder, Netlify should serve all these files statically
 
 [dev]
-    framework = "create-react-app"
+  framework = "create-react-app"

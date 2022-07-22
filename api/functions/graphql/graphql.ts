@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { ApolloServer } from "apollo-server-lambda";
+import { Callback, Context, Handler } from "aws-lambda";
 import { typeDefs, resolvers } from "../../graphql/schema";
 
 const prisma = new PrismaClient();
@@ -14,7 +15,7 @@ const server = new ApolloServer({
     },
 });
 
-export const handler = async (event: any, context: any, callback: any) => {
+export const handler: Handler = async (event: any, context: Context, callback: Callback) => {
     if (!event.requestContext) {
         event.requestContext = context;
     }

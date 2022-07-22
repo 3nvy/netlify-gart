@@ -29,10 +29,7 @@ export const UserExampleTypeDefs = gql`
 
 export const UserExampleResolvers: GenericGraphQLResolver = {
     Query: {
-        users: (_parent: any, _args: any, { db }: { db: PrismaDB }) => {
-            console.log(db);
-            return db.userExample.findMany();
-        },
+        users: (_parent: any, _args: any, { db }: { db: PrismaDB }) => db.userExample.findMany(),
         user: (_parent: any, { id }: any, { db }: { db: PrismaDB }) =>
             db.userExample.findUnique({
                 where: {
