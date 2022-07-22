@@ -1,18 +1,7 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { useParams, useNavigate } from "react-router-dom";
+import { GET_USER } from "../../graphql/queries";
 import { UserData, UserVars } from "../../types/graphql";
-
-const GET_USER = gql`
-    query GetUser($id: ID!) {
-        user(id: $id) {
-            id
-            firstName
-            surName
-            age
-            occupation
-        }
-    }
-`;
 
 const UserDetails = () => {
     const navigate = useNavigate();

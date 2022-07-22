@@ -1,16 +1,7 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
+import { GET_USERS } from "../../graphql/queries";
 import { UsersData } from "../../types/graphql";
-
-const GET_USERS = gql`
-    query GetUsers {
-        users {
-            id
-            firstName
-            surName
-        }
-    }
-`;
 
 const UserList = () => {
     const { loading, error, data } = useQuery<UsersData>(GET_USERS);
@@ -20,15 +11,20 @@ const UserList = () => {
     console.log(data);
 
     return (
-        <ul>
-            {data?.users.map((user) => (
-                <li key={user.id}>
-                    <Link to={`/user/${user.id}`}>
-                        {user.firstName} {user.surName}
-                    </Link>
-                </li>
-            ))}
-        </ul>
+        <div>
+            <Link to={`/user/create`}> Create New User</Link>
+
+            <h2>List of Users:</h2>
+            <ul>
+                {data?.users.map((user) => (
+                    <li key={user.id}>
+                        <Link to={`/user/${user.id}`}>
+                            {user.firstName} {user.surName}
+                        </Link>
+                    </li>
+                ))}
+            </ul>
+        </div>
     );
 };
 
