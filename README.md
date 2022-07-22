@@ -38,8 +38,6 @@ This project uses netlify functions, in order to deploy a serverless full-stack 
 
 ## Setting Up The Database
 
-<br>
-
 The project is setup to work with Prisma Client, which is an ORM that has native connectors to PostgreSQL, MySQL, SQLite, SQL Server, MongoDB and CockroachDB, but you are free to reconfigure and use what you want. I personally recommend [Supabase](https://supabase.com), as its free and really easy to use and setup.
 
 Once you have your database setup, you will need to add your `Connection String` to the `.env` file (you can rename the `.env.template` file provided), by replacing the `DATABASE_URL` with a valid url.
@@ -50,7 +48,7 @@ This should be all you need for your database, you don't need to create any tabl
 
 
 ## Start The Project
-<br>
+
 As the project relies on netlify functions, start by installing the netlify cli if you haven't already:
 
 ```
