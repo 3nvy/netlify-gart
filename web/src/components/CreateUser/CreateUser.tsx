@@ -4,7 +4,7 @@ import { CreateUserDetails, User } from "../../types/graphql";
 import { useNavigate } from "react-router-dom";
 import { CREATE_USER_MUTATION, GET_USERS } from "../../graphql/queries";
 
-export const CreateUser = () => {
+const CreateUser = () => {
     const navigate = useNavigate();
     const [firstName, setFirstName] = useState("");
     const [surName, setSurName] = useState("");
@@ -103,3 +103,5 @@ export const CreateUser = () => {
         </div>
     );
 };
+
+export default CreateUser;
