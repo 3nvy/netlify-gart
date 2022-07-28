@@ -8,8 +8,6 @@ const UserList = () => {
     if (loading) return <p>Loading ...</p>;
     if (error) return <p>Something Went Wrong</p>;
 
-    console.log(data);
-
     return (
         <div>
             <Link to={`/user/create`}> Create New User</Link>
