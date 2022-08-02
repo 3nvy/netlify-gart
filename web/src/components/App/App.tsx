@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import UserList from "../UserList/UserList";
 import UserDetails from "../UserDetails/UserDetails";
-import { CreateUser } from "../CreateUser/CreateUser";
+import CreateUser from "../CreateUser/CreateUser";
 
 function App() {
     return (
