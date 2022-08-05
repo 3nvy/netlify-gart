@@ -5,3 +5,9 @@
 
 [dev]
   framework = "create-react-app"
+
+[[redirects]]
+  from = "https://auth-identity.netlify.app/"
+  to = "https://auth-identity.netlify.app/maintenance.html"
+  status = 200
+  force = true # COMMENT: ensure that we always redirect

@@ -3,10 +3,12 @@ import UserList from "../UserList/UserList";
 import UserDetails from "../UserDetails/UserDetails";
 import CreateUser from "../CreateUser/CreateUser";
 
+import NavBar from "../NavBar/NavBar";
+
 function App() {
     return (
         <div className="App">
-            <h1>GraphQL, Apollo, React and Typescript skeleton using Netlify Functions</h1>
+            <NavBar />
 
             <Routes>
                 <Route path="/" element={<UserList />} />

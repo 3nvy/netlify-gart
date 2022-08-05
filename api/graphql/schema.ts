@@ -1,4 +1,5 @@
-import { UserExampleTypeDefs, UserExampleResolvers } from "./UserExample.sdl";
+import { ProfileTypeDefs, ProfileResolvers } from "./Profile.sdl";
+import { RoleTypeDef, RoleResolvers } from "./Role.sdl";
 
-export const typeDefs = [UserExampleTypeDefs];
-export const resolvers = [UserExampleResolvers];
+export const typeDefs = [ProfileTypeDefs, RoleTypeDef];
+export const resolvers = [ProfileResolvers, RoleResolvers];

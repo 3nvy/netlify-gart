@@ -1,17 +1,18 @@
-import { PrismaClient } from "@prisma/client";
 import { ApolloServer } from "apollo-server-lambda";
 import { Callback, Context, Handler } from "aws-lambda";
 import { typeDefs, resolvers } from "../../graphql/schema";
-
-const prisma = new PrismaClient();
+import PrismaDB from "../../prisma/db";
 
 const server = new ApolloServer({
     typeDefs,
     resolvers,
     csrfPrevention: true,
     cache: "bounded",
-    context: {
-        db: prisma, // Passing prisma client as context for easy access on resolvers
+    context: async ({ context }) => {
+        return {
+            db: PrismaDB, // Passing prisma client as context for easy access on resolvers,
+            user: context?.clientContext?.user,
+        };
     },
 });
 

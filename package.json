@@ -12,7 +12,9 @@
         "start": "yarn --cwd web start",
         "build": "yarn --cwd web build",
         "install": "yarn --cwd api prisma:generate",
-        "prisma:generate": "yarn --cwd api prisma:generate"
+        "prisma:generate": "yarn --cwd api prisma:generate",
+        "prisma:migrate": "npx prisma migrate dev --schema ./api/prisma/schema.prisma",
+        "prisma:seed": "yarn --cwd api prisma:seed"
     },
     "devDependencies": {
         "concurrently": "^7.3.0"
