@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useMutation } from "@apollo/client";
 import { useAuthContext } from "../../context/authContext";
-import { UPDATE_PROFILE_MUTATION } from "../../graphql/queries";
-import { useGetProfileQuery } from "../../hooks/queries";
-import { ProfileValues, UpdateProfileDetails } from "../../types/graphql";
+import { useGetProfileQuery, useUpdateProfileMutation } from "../../hooks/queries";
+import { UpdateProfileDetails } from "../../types/graphql";
 
 const SuccessToast = ({ visible }: { visible: boolean }) => {
     if (!visible) return <></>;
@@ -31,9 +29,7 @@ const Profile = () => {
     const { register, handleSubmit } = useForm<UpdateProfileDetails>();
     const { currentUser } = useAuthContext();
     const { profile, loading } = useGetProfileQuery();
-    const [updateProfile] = useMutation<{ updateProfile: ProfileValues }, { input: UpdateProfileDetails }>(
-        UPDATE_PROFILE_MUTATION
-    );
+    const { updateProfile } = useUpdateProfileMutation();
 
     const onSubmit: SubmitHandler<UpdateProfileDetails> = (data) =>
         updateProfile({
@@ -71,6 +67,14 @@ const Profile = () => {
                             </p>
                         </label>
                     </div>
+                </div>
+                <div className="mt-5">
+                    <label className="text-gray-700">
+                        Roles
+                        <p className=" block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring">
+                            {currentUser?.app_metadata.roles.join(" | ")}
+                        </p>
+                    </label>
                 </div>
             </section>
 

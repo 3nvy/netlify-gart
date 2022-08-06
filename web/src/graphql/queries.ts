@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const GET_PROFILE_QUERY = gql`
-    query GetProfileQuery() {
+    query GetProfileQuery {
         profile {
             id
             firstName
@@ -20,6 +20,32 @@ export const UPDATE_PROFILE_MUTATION = gql`
             surName
             occupation
             age
+        }
+    }
+`;
+
+export const DELETE_PROFILE_ROLE = gql`
+    mutation RemoveProfileFromRole($roleName: String, $profileId: ID) {
+        profile: removeProfileFromRole(roleName: $roleName, profileId: $profileId) {
+            id
+            firstName
+            surName
+            occupation
+            age
+        }
+    }
+`;
+
+export const GET_PROFILES_ROLES = gql`
+    query GetProfilesRoles {
+        profiles {
+            id
+            userName
+            email
+            roles {
+                id
+                name
+            }
         }
     }
 `;
