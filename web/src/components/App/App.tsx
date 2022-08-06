@@ -1,9 +1,16 @@
-import { Routes, Route } from "react-router-dom";
-import UserList from "../UserList/UserList";
-import UserDetails from "../UserDetails/UserDetails";
-import CreateUser from "../CreateUser/CreateUser";
+import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 
 import NavBar from "../NavBar/NavBar";
+import Profile from "../Profile/Profile";
+import { useAuthContext } from "../../context/authContext";
+
+const PrivateRoute = ({ roles = [] }: { roles?: string[] }) => {
+    const { currentUser } = useAuthContext();
+    const userRoles = currentUser?.app_metadata.roles || [];
+    const hasValidRole = !roles.length || roles.some((role) => userRoles.includes(role));
+
+    return currentUser && hasValidRole ? <Outlet /> : <Navigate to="/" />;
+};
 
 function App() {
     return (
@@ -11,9 +18,10 @@ function App() {
             <NavBar />
 
             <Routes>
-                <Route path="/" element={<UserList />} />
-                <Route path="/user/:id" element={<UserDetails />} />
-                <Route path="/user/create" element={<CreateUser />} />
+                <Route path="/" element={<>Dashboard</>} />
+                <Route element={<PrivateRoute />}>
+                    <Route path="/profile" element={<Profile />} />
+                </Route>
             </Routes>
         </div>
     );

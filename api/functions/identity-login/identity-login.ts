@@ -13,6 +13,8 @@ export const handler: Handler = async (event, context) => {
         };
     }
 
+    console.log(user);
+
     /**
      * SYNCS PROFILE ROLES WITH IDENTITY ROLES ON LOGIN
      */

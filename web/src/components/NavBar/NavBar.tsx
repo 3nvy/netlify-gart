@@ -44,6 +44,7 @@ const NavBar = () => {
                     <div className="items-center md:flex">
                         <div className="flex flex-col mt-2 md:flex-row md:mt-0 md:mx-1">
                             <NavLink to="/">Home</NavLink>
+                            {currentUser && <NavLink to="/profile">Profile</NavLink>}
                         </div>
 
                         <div className="flex items-center py-2 -mx-1 md:mx-0">

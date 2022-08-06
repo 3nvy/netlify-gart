@@ -1,35 +1,25 @@
 import { gql } from "@apollo/client";
 
-export const GET_USERS = gql`
-    query GetUsers {
-        users {
+export const GET_PROFILE_QUERY = gql`
+    query GetProfileQuery() {
+        profile {
             id
             firstName
             surName
+            occupation
+            age
         }
     }
 `;
 
-export const GET_USER = gql`
-    query GetUser($id: ID!) {
-        user(id: $id) {
+export const UPDATE_PROFILE_MUTATION = gql`
+    mutation UpdateProfile($input: UpdateProfileInput!) {
+        profile: updateProfile(input: $input) {
             id
             firstName
             surName
-            age
             occupation
-        }
-    }
-`;
-
-export const CREATE_USER_MUTATION = gql`
-    mutation CreateUser($input: CreateUser!) {
-        user: createUser(input: $input) {
-            id
-            firstName
-            surName
             age
-            occupation
         }
     }
 `;

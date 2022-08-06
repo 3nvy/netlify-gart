@@ -9,10 +9,10 @@ const AuthContext = createContext<AuthContextProps>({
     currentUser: null,
 });
 
-const identity: any = netlifyIdentity;
+netlifyIdentity.init();
 
 export const AuthProvider = ({ children }: { children: any }) => {
-    const [currentUser, setCurrentUser] = useState<User | null>(null);
+    const [currentUser, setCurrentUser] = useState<User | null>(netlifyIdentity.currentUser());
 
     useEffect(() => {
         netlifyIdentity.on("login", (user) => {
@@ -23,8 +23,6 @@ export const AuthProvider = ({ children }: { children: any }) => {
             setCurrentUser(null);
             netlifyIdentity.close();
         });
-
-        netlifyIdentity.init();
 
         return () => {
             netlifyIdentity.off("login");

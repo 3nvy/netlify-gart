@@ -13,8 +13,8 @@ datasource db {
 
 model Profile {
   id         String   @id @default(cuid())
+  email      String   @unique
   userName   String
-  email      String
   firstName  String?
   surName    String?
   occupation String?

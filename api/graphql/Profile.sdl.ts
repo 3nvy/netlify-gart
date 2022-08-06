@@ -1,9 +1,10 @@
 import { gql } from "apollo-server-lambda";
+import { hasAuth } from "../helpers/authHelpers";
 import { GenericGraphQLResolver, GraphQLContext } from "../types/server";
 
 export const ProfileTypeDefs = gql`
     type Query {
-        profile(id: ID): Profile!
+        profile: Profile!
     }
 
     type Profile {
@@ -31,15 +32,23 @@ export const ProfileTypeDefs = gql`
 
 export const ProfileResolvers: GenericGraphQLResolver = {
     Query: {
-        profile: (_parent: any, { id }: any, { db, user }: GraphQLContext) =>
-            db.profile.findUnique({
-                where: { id },
+        profile: (_parent: any, _args: any, { db, user }: GraphQLContext) => {
+            hasAuth(user);
+            return db.profile.findUnique({
+                where: { id: user?.sub },
                 include: { roles: true },
-            }),
+            });
+        },
     },
     Mutation: {
-        updateProfile: (_parent: any, { input }: any, { db, user }: GraphQLContext) => {
-            return {};
+        updateProfile: async (_parent: any, { input }: any, { db, user }: GraphQLContext) => {
+            hasAuth(user);
+            return db.profile.update({
+                where: {
+                    id: user?.sub,
+                },
+                data: input,
+            });
         },
     },
 };

@@ -13,5 +13,8 @@ export type GenericGraphQLResolver = {
 
 export type GraphQLContext = {
     db: PrismaDB;
-    user?: {};
+    user?: {
+        sub: string;
+        email: string;
+    };
 };

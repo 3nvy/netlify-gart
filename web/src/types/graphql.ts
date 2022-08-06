@@ -1,4 +1,4 @@
-export type User = {
+export type ProfileValues = {
     id: string;
     firstName: string;
     surName: string;
@@ -6,16 +6,12 @@ export type User = {
     occupation: string;
 };
 
-export type UsersData = {
-    users: User[];
+export type ProfileData = {
+    profile: ProfileValues;
 };
 
-export type UserData = {
-    user: User;
-};
-
-export type UserVars = {
+export type ProfileVars = {
     id: string;
 };
 
-export type CreateUserDetails = Omit<User, "id">;
+export type UpdateProfileDetails = Omit<ProfileValues, "id">;
